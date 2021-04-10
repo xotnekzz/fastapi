@@ -5,7 +5,7 @@ from fastapi.responses import PlainTextResponse
 from fastapi import FastAPI
 import pandas as pd
 import io
-import 
+import os
 
 app = FastAPI()
 
@@ -13,7 +13,8 @@ app = FastAPI()
 @app.get("/git-pull")
 def git_pull():
     
-    is_success = subprocess.Popen("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi")
+    os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi")
+    os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull")
     
     return {"Hello": is_success}
 
