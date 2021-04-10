@@ -15,7 +15,9 @@ def git_pull():
     
     os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi")
     os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull")
-    
+
+    print("api test")
+
     return {"Hello": "test"}
 
 
