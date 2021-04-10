@@ -5,20 +5,16 @@ from fastapi.responses import PlainTextResponse
 from fastapi import FastAPI
 import pandas as pd
 import io
-import os
+import subprocess
 
 app = FastAPI()
 
 
 @app.get("/git-pull")
 def git_pull():
-    
-    os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi")
-    os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull")
-
-    print("api test")
-
-    return {"Hello": "test"}
+    subprocess.call("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi", stderr=subprocess.PIPE)
+    subprocess.call("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull", stderr=subprocess.PIPE)
+    return "success git-pull"
 
 
 @app.get("/items2/{item_id}", response_class=PlainTextResponse)
