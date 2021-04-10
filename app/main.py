@@ -16,7 +16,7 @@ def git_pull():
     os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi")
     os.system("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull")
     
-    return {"Hello": is_success}
+    return {"Hello": "test"}
 
 
 @app.get("/items2/{item_id}", response_class=PlainTextResponse)
