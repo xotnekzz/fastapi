@@ -12,8 +12,8 @@ app = FastAPI()
 
 @app.get("/git-pull")
 def git_pull():
-    subprocess.call("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi", stderr=subprocess.PIPE)
-    subprocess.call("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull", stderr=subprocess.PIPE)
+    subprocess.call("cd /var/www/fastapi/ git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi", stderr=subprocess.PIPE)
+    subprocess.call("cd /var/www/fastapi/ git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull", stderr=subprocess.PIPE)
     return "success git-pull"
 
 
