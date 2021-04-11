@@ -15,10 +15,10 @@ def git_pull():
     t1 = subprocess.Popen("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     t2 = subprocess.Popen("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull",stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     
-    task_msg = f"""
-    {t1.communicate()[0]}
-    {t2.communicate()[0]}
-    """
+    task_msg = {
+        "task1": t1.communicate()[0],
+        "task2": t2.communicate()[1]
+    }
     return task_msg
 
 
