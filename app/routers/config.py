@@ -19,6 +19,6 @@ async def git_pull():
     
     task_msg = {
         "task1": t1.communicate()[0],
-        "task2": t2.communicate()[1]
+        "task2": t2.communicate()[0]
     }
     return task_msg
