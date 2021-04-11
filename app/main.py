@@ -17,7 +17,7 @@ def git_pull():
     
     task_msg = f"""
     {t1.communicate()[0]}
-    {t2.communicate()[1]}
+    {t2.communicate()[0]}
     """
     return task_msg
 
