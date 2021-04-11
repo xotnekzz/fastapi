@@ -4,7 +4,7 @@ from fastapi.responses import PlainTextResponse
 from ..dependencies import get_token_header
 
 router = APIRouter(
-    prefix="/config", prefix,
+    prefix="/config",
     tags=["config"],
     dependencies=[Depends(get_token_header)],
     responses={404: {"description": "Not found."}},
