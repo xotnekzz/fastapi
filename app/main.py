@@ -5,7 +5,8 @@ from .dependencies import get_query_token, get_token_header
 from .internal import admin
 from .routers import config
 
-app = FastAPI(dependencies=[Depends(get_query_token)])
+#app = FastAPI(dependencies=[Depends(get_query_token)])
+app = FastAPI()
 
 app.include_router(config.router)
 app.include_router(
