@@ -12,9 +12,14 @@ app = FastAPI()
 
 @app.get("/git-pull")
 def git_pull():
-    subprocess.call("cd /var/www/fastapi/; git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi", stderr=subprocess.PIPE)
-    subprocess.call("cd /var/www/fastapi/; git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull", stderr=subprocess.PIPE)
-    return "success git-pull"
+    t1 = subprocess.Popen("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ checkout -- /var/www/fastapi", stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    t2 = subprocess.Popen("git --git-dir=/var/www/fastapi/.git --work-tree=/var/www/fastapi/ pull",stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    
+    task_msg = f"""
+    {t1.communicate()[0]}
+    {t2.communicate()[1]}
+    """
+    return task_msg
 
 
 @app.get("/items2/{item_id}", response_class=PlainTextResponse)
