@@ -3,6 +3,8 @@ from fastapi.responses import PlainTextResponse
 
 from ..dependencies import get_token_header
 
+import subprocess
+
 router = APIRouter(
     prefix="/config",
     tags=["config"],
